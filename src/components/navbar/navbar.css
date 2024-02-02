@@ -1,0 +1,50 @@
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  background-color: rebeccapurple;
+  padding: 20px;
+  color: white;
+  align-items: center;
+}
+
+.navbar__input {
+  width: 200px;
+}
+
+.navbar__input input {
+  font-size: 18px;
+  padding: 16px;
+  border-radius: 12px;
+  border: none;
+  width: 24rem;
+}
+
+input:active,
+input:focus {
+  border: none;
+  padding: none;
+  outline: none;
+}
+
+.avatar__navbar {
+  width: 48px;
+  height: 48px;
+  background-color: rgb(153, 112, 194);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modal__account {
+  background-color: white;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  right: 25%;
+}
