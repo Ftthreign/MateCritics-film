@@ -1,17 +1,9 @@
 import "./navbar.css";
 
-import NavbarLogo from "./NavbarLogo";
-import SearchBox from "./SearchBox";
-import NavAccount from "./NavAccount";
+import { INavbarContainerProps } from "../../common/types/types";
 
-const NavbarContainer = () => {
-  return (
-    <div className="navbar__container">
-      <NavbarLogo />
-      <SearchBox />
-      <NavAccount />
-    </div>
-  );
+const NavbarContainer = ({ children }: INavbarContainerProps) => {
+  return <div className="navbar__container">{children}</div>;
 };
 
 export default NavbarContainer;
