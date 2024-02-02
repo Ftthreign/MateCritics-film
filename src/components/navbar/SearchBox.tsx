@@ -1,4 +1,4 @@
-import { INavSearchProps } from "../../common/types/types";
+import { INavSearchProps } from "../../common/types/navbar";
 
 const SearchBox = ({ query, setQuery }: INavSearchProps) => {
   return (
