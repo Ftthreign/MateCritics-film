@@ -12,3 +12,31 @@ body {
   height: 100vh;
   background-color: rgb(62, 75, 92);
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+body:hover::-webkit-scrollbar-thumb {
+  background-color: white;
+}
+
+body:hover::-webkit-scrollbar-thumb:hover,
+body:hover::-webkit-scrollbar-thumb:active {
+  background-color: #555;
+}
+
+/* When hovering over the container, show the scrollbar
+.box:hover::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 2px;
+}
+
+.box:hover::-webkit-scrollbar-thumb:hover,
+.box:hover::-webkit-scrollbar-thumb:active {
+  background-color: #555; */
