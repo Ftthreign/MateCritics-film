@@ -1,10 +1,13 @@
-import { ISelectedMovie } from "../../common/types/movie";
+import { ISelectedMovie } from "../../../../common/types/movie";
 import { useCallback, useState, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
-import { API_KEY } from "../../common/refs/data";
+import { API_KEY } from "../../../../common/refs/data";
+
+import MovieStyle from "./MovieDetails.module.css";
 
 import MovieDetailsHeader from "./movieDetailsHeader";
 import MovieDetailsSection from "./movieDetailsSection";
+
 const SelectedMovie = ({
   movieID,
   onCloseMovie,
@@ -19,7 +22,7 @@ const SelectedMovie = ({
     try {
       setIsloading(true);
       const res = await fetch(
-        `http://www.omdbapi.com=${API_KEY}&plot=full&i=${movieID}`
+        `http://www.omdbapi.com/?apikey=${API_KEY}&plot=full&i=${movieID}`
       );
       const data = await res.json();
 
@@ -51,13 +54,21 @@ const SelectedMovie = ({
   }, [onCloseMovie]);
 
   return (
-    <div>
+    <div className={MovieStyle.movie__details}>
       {isLoading ? (
         <CircularProgress color="info" />
       ) : (
         <>
           <MovieDetailsHeader onCloseMovie={onCloseMovie} movie={movie} />
-          <MovieDetailsSection />
+          <MovieDetailsSection
+            onAddMovie={onAddMovie}
+            movieID={movieID}
+            onClose={onCloseMovie}
+            watched={watched}
+            ratingValue={userRating}
+            movie={movie}
+            onUserRating={setUserRating}
+          />
         </>
       )}
     </div>

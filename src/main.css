@@ -31,6 +31,9 @@ body:hover::-webkit-scrollbar-thumb:active {
   background-color: #555;
 }
 
+.separate__movie {
+  display: flex;
+}
 /* When hovering over the container, show the scrollbar
 .box:hover::-webkit-scrollbar-thumb {
   background-color: #888;

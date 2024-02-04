@@ -1,17 +1,18 @@
 import { Tooltip } from "@mui/material";
-import Modal from "@mui/material/Modal";
-import { useState } from "react";
+// import { useState } from "react";
 
+import NavStyle from "./navbar.module.css";
 const NavAccount = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
   return (
     <Tooltip title="see watched film" arrow>
-      <div className="avatar__navbar" onClick={() => setIsOpen((e) => !e)}>
+      <div
+        className={NavStyle.avatar__navbar}
+        // onClick={() => setIsOpen((e) => !e)}
+      >
         <p>G</p>
-        <Modal open={isOpen}>
+        {/* <Modal open={isOpen}>
           <div className="modal__account">DATA HERE</div>
-        </Modal>
+        </Modal> */}
       </div>
     </Tooltip>
   );

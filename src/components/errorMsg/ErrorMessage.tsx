@@ -1,6 +1,5 @@
-import { IErrorMessage } from "../../common/types/error";
+import { IErrorMessage } from "../../../common/types/errorMsg";
 
-import "./error.css";
 const ErrorMessage = ({ errorMessage }: IErrorMessage) => {
   return <div>{errorMessage}</div>;
 };

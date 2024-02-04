@@ -1,4 +1,4 @@
-import { IMovieDetailsHeader } from "../../common/types/movie";
+import { IMovieDetailsHeader } from "../../../../common/types/movie";
 
 const MovieDetailsHeader = ({ onCloseMovie, movie }: IMovieDetailsHeader) => {
   const {

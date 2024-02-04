@@ -1,5 +1,7 @@
+import { node } from "./movie";
+
 export interface INavbarContainerProps {
-  children: React.ReactNode;
+  children: node;
 }
 
 export interface INavSearchProps {

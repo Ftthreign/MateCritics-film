@@ -1,18 +1,20 @@
+import CircularProgress from "@mui/material/CircularProgress";
 import { useEffect, useState } from "react";
 
 import NavbarContainer from "./components/navbar/NavbarContainer";
-import NavbarLogo from "./components/navbar/NavbarLogo";
-import SearchBox from "./components/navbar/SearchBox";
-import NavAccount from "./components/navbar/NavAccount";
 import MovieList from "./components/movie/movieList";
 import ErrorMessage from "./components/errorMsg/ErrorMessage";
-import ContainerBox from "./components/ContainerBox";
-import SelectedMovie from "./components/movieDetails/SelectedMovie";
+import ContainerBox from "./components/movie/ContainerBox";
+import SelectedMovie from "./components/movie/movieDetails/SelectedMovie";
+import MovieResultNum from "./components/movie/movieResult/movieResult";
+import Button from "./components/button/button";
+import Modal from "./components/modal/modal";
+import { NavbarLogo, SearchBox, NavAccount } from "./components/navbar";
+import { API_KEY } from "../common/refs/data";
+import { MovieData } from "../common/types/movie";
+import WatchedSummary from "./components/movie/watchedMovieStat/WatchedSummary";
+import WatchedMovieList from "./components/movie/watchedMovieStat/WatchedMovieList";
 
-import CircularProgress from "@mui/material/CircularProgress";
-
-import { API_KEY } from "./common/refs/data";
-import { MovieData } from "./common/types/movie";
 const App = () => {
   const [movies, setMovies] = useState<MovieData[]>([]);
   const [query, setQuery] = useState<string>("doraemon");
@@ -20,6 +22,7 @@ const App = () => {
   const [error, setError] = useState<string>("");
   const [selectedId, setSelectedId] = useState<null | string>(null);
   const [watched, setWatched] = useState<MovieData[]>([]);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchMovies = async function (): Promise<void> {
@@ -59,7 +62,7 @@ const App = () => {
 
   // Function Utilities
   const handleSelectMovie = (id: string | null) => {
-    setSelectedId((select) => (id === select ? null : id));
+    setSelectedId(id);
   };
 
   const handleCloseMovie = () => {
@@ -71,6 +74,14 @@ const App = () => {
     if (movie.Runtime !== "N/A" || movie.Runtime !== "Ongoing") {
       setWatched((watchList) => [...watchList, movie]);
     }
+  };
+
+  const handleOpen = () => {
+    setIsOpen((e) => !e);
+  };
+
+  const handleDeleteWatchedMovie = (id: string) => {
+    setWatched((watch) => watch.filter((movie) => movie.imdbID !== id));
   };
 
   return (
@@ -85,23 +96,39 @@ const App = () => {
         {isLoading && <CircularProgress color="secondary" />}
         {error && <ErrorMessage errorMessage={error} />}
         {!isLoading && !error && (
-          <MovieList
-            movies={movies}
-            founded={query}
-            onSelectMovie={(id) => handleSelectMovie(id)}
-          />
+          <>
+            <MovieResultNum founded={query} movies={movies} />
+            <div className="separate__movie">
+              <Button click={handleOpen}>
+                <MovieList
+                  movies={movies}
+                  onSelectMovie={(id) => handleSelectMovie(id)}
+                />
+              </Button>
+            </div>
+          </>
         )}
       </ContainerBox>
 
+      <Modal isOpen={isOpen} click={handleOpen}>
+        <ContainerBox>
+          {selectedId && (
+            <SelectedMovie
+              movieID={selectedId}
+              onAddMovie={handleAddWatchList}
+              onCloseMovie={handleCloseMovie}
+              watched={watched}
+            />
+          )}
+        </ContainerBox>
+      </Modal>
+
       <ContainerBox>
-        {selectedId && (
-          <SelectedMovie
-            movieID={selectedId}
-            onAddMovie={handleAddWatchList}
-            onCloseMovie={handleCloseMovie}
-            watched={watched}
-          />
-        )}
+        <WatchedSummary watched={watched} />
+        <WatchedMovieList
+          watched={watched}
+          onDelete={handleDeleteWatchedMovie}
+        />
       </ContainerBox>
     </>
   );

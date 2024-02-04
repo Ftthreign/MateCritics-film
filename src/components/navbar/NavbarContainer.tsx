@@ -1,9 +1,9 @@
-import "./navbar.css";
+import NavStyle from "./navbar.module.css";
 
-import { INavbarContainerProps } from "../../common/types/navbar";
+import { INavbarContainerProps } from "../../../common/types/navbar";
 
 const NavbarContainer = ({ children }: INavbarContainerProps) => {
-  return <div className="navbar__container">{children}</div>;
+  return <div className={NavStyle.navbar__container}>{children}</div>;
 };
 
 export default NavbarContainer;
