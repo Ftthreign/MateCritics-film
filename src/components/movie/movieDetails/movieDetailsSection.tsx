@@ -24,7 +24,7 @@ const MovieDetailsSection = ({
     Runtime: duration,
   } = movie;
 
-  const isAlreadyWathced = watched.some((movie) => movie.imdbID === movieID);
+  const isAlreadyWatched = watched.some((movie) => movie.imdbID === movieID);
   const userRatingValue = watched.find(
     (movie) => movie.imdbID === movieID
   )?.myRating;
@@ -40,6 +40,7 @@ const MovieDetailsSection = ({
       poster,
       rating: Number(rating),
       duration: isNumberDuration,
+      myRating: ratingValue,
       countRatingDecisions: countRef.current,
     };
     onAddMovie(newMovie);
@@ -57,10 +58,11 @@ const MovieDetailsSection = ({
     };
   }, [title]);
 
+  // console.log(movie);
   return (
     <section>
       <div className="rating">
-        {isAlreadyWathced ? (
+        {isAlreadyWatched ? (
           <p>{`You already watched this with ${userRatingValue} star`}</p>
         ) : (
           <>

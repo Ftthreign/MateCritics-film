@@ -11,6 +11,7 @@ export type MovieData = {
   Actor: string;
   Genre: string;
   Runtime: string;
+  imdbRating?: string;
   Languange?: string;
   Country?: string;
   myRating?: string | number;
@@ -35,8 +36,10 @@ export interface IContainer {
 export interface ISelectedMovie {
   movieID: string;
   onCloseMovie: () => void;
-  onAddMovie: (movie: MovieObj) => void;
+  onAddMovie: (movie: MovieObj | newMovieType) => void;
   watched: MovieObj;
+  userRating?: string | number;
+  onUserRating?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface IMovieDetailsHeader {
@@ -49,7 +52,8 @@ export interface IMovieResult {
   founded: string;
   movies: MovieObj;
 }
-type newMovieType = {
+
+export type newMovieType = {
   imdbID: string;
   title: string;
   year: string;
@@ -63,8 +67,10 @@ export interface IMovieDetailsSection {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   movie: any;
   watched: MovieObj;
-  ratingValue: string | number;
+  ratingValue: string | number | undefined;
   onClose: () => void;
   onAddMovie: (movie: newMovieType) => void;
-  onUserRating: React.Dispatch<React.SetStateAction<string>>;
+  // onUserRating: React.Dispatch<React.SetStateAction<string>>;
+  userRating?: string | number;
+  onUserRating?: React.Dispatch<React.SetStateAction<string>>;
 }

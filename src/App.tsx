@@ -22,7 +22,9 @@ const App = () => {
   const [error, setError] = useState<string>("");
   const [selectedId, setSelectedId] = useState<null | string>(null);
   const [watched, setWatched] = useState<MovieData[]>([]);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpenList, setIsOpenList] = useState<boolean>(false);
+  const [isOpenWatched, setIsOpenWatched] = useState<boolean>(false);
+  const [userRating, setUserRating] = useState("");
 
   useEffect(() => {
     const fetchMovies = async function (): Promise<void> {
@@ -39,7 +41,7 @@ const App = () => {
 
         if (data.Response === "False") throw new Error("Movie not Found");
 
-        console.log(data);
+        // console.log(data);
         setMovies(data.Search);
         setError("");
       } catch (err) {
@@ -67,17 +69,22 @@ const App = () => {
 
   const handleCloseMovie = () => {
     setSelectedId(null);
+    // setIsOpenList((e) => !e);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleAddWatchList = (movie: any) => {
-    if (movie.Runtime !== "N/A" || movie.Runtime !== "Ongoing") {
+    if (movie.duration !== "N/A" || movie.duration !== "Ongoing") {
       setWatched((watchList) => [...watchList, movie]);
     }
   };
 
   const handleOpen = () => {
-    setIsOpen((e) => !e);
+    setIsOpenWatched((e) => !e);
+  };
+
+  const handleOpenList = () => {
+    setIsOpenList(true);
   };
 
   const handleDeleteWatchedMovie = (id: string) => {
@@ -89,7 +96,9 @@ const App = () => {
       <NavbarContainer>
         <NavbarLogo />
         <SearchBox query={query} setQuery={setQuery} />
-        <NavAccount />
+        <Button click={handleOpen}>
+          <NavAccount />
+        </Button>
       </NavbarContainer>
 
       <ContainerBox>
@@ -99,7 +108,7 @@ const App = () => {
           <>
             <MovieResultNum founded={query} movies={movies} />
             <div className="separate__movie">
-              <Button click={handleOpen}>
+              <Button click={handleOpenList}>
                 <MovieList
                   movies={movies}
                   onSelectMovie={(id) => handleSelectMovie(id)}
@@ -110,26 +119,34 @@ const App = () => {
         )}
       </ContainerBox>
 
-      <Modal isOpen={isOpen} click={handleOpen}>
+      {selectedId ? (
+        <Modal isOpen={isOpenList} click={handleOpenList}>
+          <ContainerBox>
+            {selectedId && (
+              <SelectedMovie
+                movieID={selectedId}
+                onAddMovie={handleAddWatchList}
+                onCloseMovie={handleCloseMovie}
+                watched={watched}
+                userRating={userRating}
+                onUserRating={setUserRating}
+              />
+            )}
+          </ContainerBox>
+        </Modal>
+      ) : (
+        ""
+      )}
+
+      <Modal isOpen={isOpenWatched} click={handleOpen}>
         <ContainerBox>
-          {selectedId && (
-            <SelectedMovie
-              movieID={selectedId}
-              onAddMovie={handleAddWatchList}
-              onCloseMovie={handleCloseMovie}
-              watched={watched}
-            />
-          )}
+          <WatchedSummary watched={watched} />
+          <WatchedMovieList
+            watched={watched}
+            onDelete={handleDeleteWatchedMovie}
+          />
         </ContainerBox>
       </Modal>
-
-      <ContainerBox>
-        <WatchedSummary watched={watched} />
-        <WatchedMovieList
-          watched={watched}
-          onDelete={handleDeleteWatchedMovie}
-        />
-      </ContainerBox>
     </>
   );
 };
