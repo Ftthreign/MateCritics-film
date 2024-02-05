@@ -16,15 +16,16 @@ import WatchedSummary from "./components/movie/watchedMovieStat/WatchedSummary";
 import WatchedMovieList from "./components/movie/watchedMovieStat/WatchedMovieList";
 
 const App = () => {
-  const [movies, setMovies] = useState<MovieData[]>([]);
   const [query, setQuery] = useState<string>("doraemon");
-  const [isLoading, setIsloading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
   const [selectedId, setSelectedId] = useState<null | string>(null);
   const [watched, setWatched] = useState<MovieData[]>([]);
   const [isOpenList, setIsOpenList] = useState<boolean>(false);
   const [isOpenWatched, setIsOpenWatched] = useState<boolean>(false);
   const [userRating, setUserRating] = useState("");
+
+  const [movies, setMovies] = useState<MovieData[]>([]);
+  const [isLoading, setIsloading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   useEffect(() => {
     const fetchMovies = async function (): Promise<void> {
@@ -41,7 +42,6 @@ const App = () => {
 
         if (data.Response === "False") throw new Error("Movie not Found");
 
-        // console.log(data);
         setMovies(data.Search);
         setError("");
       } catch (err) {
@@ -69,7 +69,6 @@ const App = () => {
 
   const handleCloseMovie = () => {
     setSelectedId(null);
-    // setIsOpenList((e) => !e);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
