@@ -82,6 +82,15 @@ export interface IMovieDetailsSection {
   onUserRating?: React.Dispatch<React.SetStateAction<string>>;
 }
 
+export interface IWatchedSummary {
+  watched?: MovieObj;
+}
+export interface IWatchedMovieList {
+  watched?: MovieObj;
+  onDelete: () => void;
+  movie?: MovieData[];
+}
+
 export interface IWatchedMovie {
   movie?: MovieData | newMovieType;
   watched?: MovieObj;
