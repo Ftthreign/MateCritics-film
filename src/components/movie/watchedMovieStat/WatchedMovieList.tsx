@@ -1,34 +1,36 @@
-const WatchedMovieList = ({ watched, onDelete }) => {
+import { IWatchedMovieList } from "../../../../common/types/movie";
+
+const WatchedMovieList = ({ watched, onDelete }: IWatchedMovieList) => {
   return (
     <ul>
-      {watched.map((movie) => (
+      {watched?.map((movie) => (
         <WatchedMovie movie={movie} key={movie.imdbID} onDelete={onDelete} />
       ))}
     </ul>
   );
 };
 
-function WatchedMovie({ movie, onDelete }) {
+const WatchedMovie = ({ movie, onDelete }) => {
   const handleConfirm = (id) => {
     const confirm = window.confirm("Are you sure want to delete this film?");
     confirm && onDelete(id);
   };
   return (
     <li>
-      <img src={movie.poster} alt={`${movie.title} poster`} />
-      <h3>{movie.title}</h3>
+      <img src={movie?.poster} alt={`${movie?.title} poster`} />
+      <h3>{movie?.title}</h3>
       <div>
         <p>
           <span>⭐️</span>
-          <span>{movie.rating}</span>
+          <span>{movie?.rating}</span>
         </p>
         <p>
           <span>🌟</span>
-          <span>{movie.myRating}</span>
+          <span>{movie?.myRating}</span>
         </p>
         <p>
           <span>⏳</span>
-          <span>{movie.duration} min</span>
+          <span>{movie?.duration} min</span>
         </p>
 
         <button
@@ -40,5 +42,5 @@ function WatchedMovie({ movie, onDelete }) {
       </div>
     </li>
   );
-}
+};
 export default WatchedMovieList;

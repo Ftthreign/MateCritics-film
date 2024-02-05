@@ -2,10 +2,13 @@ type MovieObj = MovieData[];
 export type node = React.ReactNode;
 
 export type MovieData = {
+  rating?: string | number;
+  duration?: string | number;
   Title: string;
   Year: string;
   imdbID: string;
   Poster: string;
+  poster?: string;
   Plot: string;
   Director: string;
   Actor: string;
@@ -62,6 +65,7 @@ export type newMovieType = {
   duration: number | string;
   countRatingDecisions: number | string;
 };
+
 export interface IMovieDetailsSection {
   movieID: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -73,4 +77,13 @@ export interface IMovieDetailsSection {
   // onUserRating: React.Dispatch<React.SetStateAction<string>>;
   userRating?: string | number;
   onUserRating?: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface IWatchedSummary {
+  watched?: MovieObj;
+}
+export interface IWatchedMovieList {
+  watched?: MovieObj;
+  onDelete: () => void;
+  movie?: MovieData[];
 }
