@@ -1,7 +1,8 @@
 .movie__details {
-  background-color: rgb(209, 189, 189);
+  background-color: #1f214a;
   padding: 20px;
   height: 100%;
+  color: white;
 }
 
 .btnBack {
@@ -15,7 +16,7 @@
   transition: all 0.4s;
   position: fixed;
   top: 11%;
-  right: 74%;
+  right: 79%;
 }
 
 .btnBack:hover {
@@ -32,7 +33,11 @@
 
 .movieDescription {
   display: flex;
-  font-size: x-large;
+  font-size: large;
+}
+
+.movieDescription img {
+  height: 30rem;
 }
 
 .movieDescription span {
@@ -43,9 +48,38 @@
   margin: 20px;
 }
 
+.movieDescription div p {
+  margin: 1.5rem 0;
+}
+
+.plotStyle {
+  text-align: justify;
+}
+
 .dataDetails {
   font-size: larger;
 
   margin-top: 20px;
   margin-left: 20px;
+}
+
+.ratingStyle {
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.ratingStyle button {
+  background-color: #1f214a;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 12px;
 }

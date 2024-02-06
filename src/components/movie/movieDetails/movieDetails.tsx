@@ -25,7 +25,13 @@ const MovieDetailsHeader = ({
     Year: year,
   } = movie;
 
-  const { btnBack, detailsOverview, movieDescription } = Style;
+  const {
+    btnBack,
+    detailsOverview,
+    movieDescription,
+    ratingStyle,
+    genreStyle,
+  } = Style;
   const countRef = useRef(0);
 
   const isAlreadyWatched = watched.some((movie) => movie.imdbID === movieID);
@@ -71,7 +77,26 @@ const MovieDetailsHeader = ({
       <div className={detailsOverview}>
         <h2>{title}</h2>
         <div className={movieDescription}>
-          <img src={poster} alt={`${title} poster`} />
+          <div>
+            <img src={poster} alt={`${title} poster`} />
+            <span>Rate the movie here : </span>
+            <div className={ratingStyle}>
+              {isAlreadyWatched ? (
+                <p>{`You already watched this with ${userRatingValue} star`}</p>
+              ) : (
+                <>
+                  <StarRating
+                    size={24}
+                    maxRating={10}
+                    onSetRating={onUserRating}
+                  />
+                  {ratingValue && (
+                    <button onClick={handleAdd}>{"Add to list + "}</button>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
           <div>
             <p>
               <span>Release Date :</span> {release}{" "}
@@ -80,34 +105,20 @@ const MovieDetailsHeader = ({
               <span>Duration :</span>{" "}
               {duration === "N/A" ? "Ongoing" : duration}
             </p>
-            <p>{genre}</p>
+            <p className={genreStyle}>{genre}</p>
             <p>
               <span>⭐</span>
               {rating} <strong>IMDB Rating</strong>
             </p>
-            <section>
-              <div className="rating">
-                {isAlreadyWatched ? (
-                  <p>{`You already watched this with ${userRatingValue} star`}</p>
-                ) : (
-                  <>
-                    <StarRating
-                      size={24}
-                      maxRating={10}
-                      onSetRating={onUserRating}
-                    />
-                    {ratingValue && (
-                      <button onClick={handleAdd}>{"Add to list + "}</button>
-                    )}
-                  </>
-                )}
-              </div>
-              <p>
-                <em>{plot}</em>
-              </p>
-              <p>Starring {actors}</p>
-              <p>Directed by {director}</p>
-            </section>
+            <p>
+              <span>Starring :</span> {actors}
+            </p>
+            <p>
+              <span>Directed by :</span> {director}
+            </p>
+            <p>
+              <em>{plot}</em>
+            </p>
           </div>
         </div>
       </div>

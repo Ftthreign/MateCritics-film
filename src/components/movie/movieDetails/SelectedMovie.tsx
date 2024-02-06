@@ -2,7 +2,7 @@ import { ISelectedMovie } from "../../../../common/types/movie";
 import { useCallback, useState, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 import { API_KEY } from "../../../../common/refs/data";
-
+import "../../../main.css";
 import MovieStyle from "./MovieDetails.module.css";
 import MovieDetailsHeader from "./movieDetails";
 
@@ -55,7 +55,9 @@ const SelectedMovie = ({
   return (
     <div className={MovieStyle.movie__details}>
       {isLoading ? (
-        <CircularProgress color="info" />
+        <div className="progressbar">
+          <CircularProgress color="info" />
+        </div>
       ) : (
         <>
           <MovieDetailsHeader
