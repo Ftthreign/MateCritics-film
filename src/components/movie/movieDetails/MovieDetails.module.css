@@ -1,5 +1,51 @@
 .movie__details {
-  background-color: grey;
+  background-color: rgb(209, 189, 189);
   padding: 20px;
   height: 100%;
+}
+
+.btnBack {
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  display: block;
+  padding: 12px;
+  /* width: 60px; */
+  margin-bottom: 40px;
+  transition: all 0.4s;
+  position: fixed;
+  top: 11%;
+  right: 74%;
+}
+
+.btnBack:hover {
+  background-color: blueviolet;
+  transition: all 0.4s;
+  transform: translateY(-2px);
+}
+
+.detailsOverview img {
+  border-radius: 12px;
+  border: 2px solid white;
+  margin: 20px 0 20px 0;
+}
+
+.movieDescription {
+  display: flex;
+  font-size: x-large;
+}
+
+.movieDescription span {
+  font-weight: 800;
+}
+
+.movieDescription > div {
+  margin: 20px;
+}
+
+.dataDetails {
+  font-size: larger;
+
+  margin-top: 20px;
+  margin-left: 20px;
 }
