@@ -1,5 +1,9 @@
 import CircularProgress from "@mui/material/CircularProgress";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { NavbarLogo, SearchBox, NavAccount } from "./components/navbar";
+import { MovieData } from "../common/types/movie";
+import { useFetchMovie } from "../hooks/useFetchMovie";
+
 import "./main.css";
 import NavbarContainer from "./components/navbar/NavbarContainer";
 import MovieList from "./components/movie/movieList";
@@ -9,9 +13,6 @@ import SelectedMovie from "./components/movie/movieDetails/SelectedMovie";
 import MovieResultNum from "./components/movie/movieResult/movieResult";
 import Button from "./components/button/button";
 import Modal from "./components/modal/modal";
-import { NavbarLogo, SearchBox, NavAccount } from "./components/navbar";
-import { API_KEY } from "../common/refs/data";
-import { MovieData } from "../common/types/movie";
 import WatchedSummary from "./components/movie/watchedMovieStat/WatchedSummary";
 import WatchedMovieList from "./components/movie/watchedMovieStat/WatchedMovieList";
 
@@ -21,60 +22,10 @@ const App = () => {
   const [watched, setWatched] = useState<MovieData[]>([]);
   const [isOpenList, setIsOpenList] = useState<boolean>(false);
   const [isOpenWatched, setIsOpenWatched] = useState<boolean>(false);
-  const [userRating, setUserRating] = useState("");
-
-  const [movies, setMovies] = useState<MovieData[]>([]);
-  const [isLoading, setIsloading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
-
-  useEffect(() => {
-    alert(
-      "GUIDE :\nPRESS 'ENTER' to auto focus on search\nPRESS 'ESC' to back to main page"
-    );
-  }, []);
-
-  useEffect(() => {
-    const fetchMovies = async function (): Promise<void> {
-      try {
-        setIsloading(true);
-        setError("");
-        const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`
-        );
-
-        if (!res.ok) throw new Error("Error Fetching data");
-
-        const data = await res.json();
-
-        if (data.Response === "False") throw new Error("Movie not Found");
-
-        setMovies(data.Search);
-        setError("");
-      } catch (err) {
-        if (err instanceof Error) {
-          console.log(err.message);
-          setError(err.message);
-        }
-      } finally {
-        setIsloading(false);
-      }
-    };
-
-    fetchMovies();
-
-    const debounceFetch = setTimeout(fetchMovies, 500);
-    return () => {
-      clearTimeout(debounceFetch);
-    };
-  }, [query]);
 
   // Function Utilities
   const handleSelectMovie = (id: string | null) => {
     setSelectedId(id);
-  };
-
-  const handleCloseMovie = () => {
-    setSelectedId(null);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -95,6 +46,18 @@ const App = () => {
   const handleDeleteWatchedMovie = (id: string) => {
     setWatched((watch) => watch.filter((movie) => movie.imdbID !== id));
   };
+
+  const handleCloseMovie = useCallback(() => {
+    setSelectedId(null);
+  }, []);
+
+  const { movies, isLoading, error } = useFetchMovie(query, handleCloseMovie);
+
+  useEffect(() => {
+    alert(
+      "GUIDE :\nPRESS 'ENTER' to auto focus on search\nPRESS 'ESC' to back to main page"
+    );
+  }, []);
 
   return (
     <>
@@ -137,8 +100,6 @@ const App = () => {
                 onAddMovie={handleAddWatchList}
                 onCloseMovie={handleCloseMovie}
                 watched={watched}
-                userRating={userRating}
-                onUserRating={setUserRating}
               />
             )}
           </ContainerBox>

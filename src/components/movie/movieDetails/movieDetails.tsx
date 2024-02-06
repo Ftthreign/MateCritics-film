@@ -31,6 +31,7 @@ const MovieDetailsHeader = ({
     movieDescription,
     ratingStyle,
     genreStyle,
+    rated,
   } = Style;
   const countRef = useRef(0);
 
@@ -79,10 +80,14 @@ const MovieDetailsHeader = ({
         <div className={movieDescription}>
           <div>
             <img src={poster} alt={`${title} poster`} />
-            <span>Rate the movie here : </span>
+            {!ratingValue && !isAlreadyWatched && (
+              <span>Rate the movie here : </span>
+            )}
             <div className={ratingStyle}>
               {isAlreadyWatched ? (
-                <p>{`You already watched this with ${userRatingValue} star`}</p>
+                <p
+                  className={rated}
+                >{`You already watched this with ${userRatingValue} ⭐`}</p>
               ) : (
                 <>
                   <StarRating

@@ -11,11 +11,10 @@ const SelectedMovie = ({
   onCloseMovie,
   onAddMovie,
   watched,
-  userRating,
-  onUserRating,
 }: ISelectedMovie) => {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsloading] = useState(false);
+  const [userRating, setUserRating] = useState("");
 
   const getMovieDetails = useCallback(async () => {
     try {
@@ -65,7 +64,7 @@ const SelectedMovie = ({
             movie={movie}
             movieID={movieID}
             ratingValue={userRating}
-            onUserRating={onUserRating}
+            onUserRating={setUserRating}
             onAddMovie={onAddMovie}
             watched={watched}
           />

@@ -83,3 +83,9 @@
   cursor: pointer;
   margin: 12px;
 }
+
+.rated {
+  color: black;
+  font-size: medium;
+  font-weight: 800;
+}
