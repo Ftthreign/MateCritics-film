@@ -51,6 +51,13 @@ export interface IMovieDetailsHeader {
   onCloseMovie: () => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   movie: any;
+  movieID: string;
+  watched: MovieObj;
+  ratingValue: string | number | undefined;
+  onAddMovie: (movie: newMovieType) => void;
+  // onUserRating: React.Dispatch<React.SetStateAction<string>>;
+  userRating?: string | number;
+  onUserRating?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface IMovieResult {

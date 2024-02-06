@@ -4,9 +4,7 @@ import { CircularProgress } from "@mui/material";
 import { API_KEY } from "../../../../common/refs/data";
 
 import MovieStyle from "./MovieDetails.module.css";
-
-import MovieDetailsHeader from "./movieDetailsHeader";
-import MovieDetailsSection from "./movieDetailsSection";
+import MovieDetailsHeader from "./movieDetails";
 
 const SelectedMovie = ({
   movieID,
@@ -60,15 +58,14 @@ const SelectedMovie = ({
         <CircularProgress color="info" />
       ) : (
         <>
-          <MovieDetailsHeader onCloseMovie={onCloseMovie} movie={movie} />
-          <MovieDetailsSection
-            onAddMovie={onAddMovie}
-            movieID={movieID}
-            onClose={onCloseMovie}
-            watched={watched}
-            ratingValue={userRating}
+          <MovieDetailsHeader
+            onCloseMovie={onCloseMovie}
             movie={movie}
+            movieID={movieID}
+            ratingValue={userRating}
             onUserRating={onUserRating}
+            onAddMovie={onAddMovie}
+            watched={watched}
           />
         </>
       )}
