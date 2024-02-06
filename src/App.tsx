@@ -1,6 +1,6 @@
 import CircularProgress from "@mui/material/CircularProgress";
 import { useEffect, useState } from "react";
-
+import "./main.css";
 import NavbarContainer from "./components/navbar/NavbarContainer";
 import MovieList from "./components/movie/movieList";
 import ErrorMessage from "./components/errorMsg/ErrorMessage";
@@ -26,6 +26,12 @@ const App = () => {
   const [movies, setMovies] = useState<MovieData[]>([]);
   const [isLoading, setIsloading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+
+  useEffect(() => {
+    alert(
+      "GUIDE :\nPRESS 'ENTER' to auto focus on search\nPRESS 'ESC' to back to main page"
+    );
+  }, []);
 
   useEffect(() => {
     const fetchMovies = async function (): Promise<void> {
@@ -101,7 +107,11 @@ const App = () => {
       </NavbarContainer>
 
       <ContainerBox>
-        {isLoading && <CircularProgress color="secondary" />}
+        {isLoading && (
+          <div className="progressbar">
+            <CircularProgress color="info" />
+          </div>
+        )}
         {error && <ErrorMessage errorMessage={error} />}
         {!isLoading && !error && (
           <>
