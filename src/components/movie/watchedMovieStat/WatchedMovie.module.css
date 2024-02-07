@@ -1,0 +1,70 @@
+.list {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+}
+
+.summary {
+  color: white;
+  background-color: #663399;
+  border-radius: 0 0 50% 50%;
+  height: 12rem;
+}
+
+.summary,
+.list {
+  padding: 24px;
+}
+
+.summaryDetails {
+  padding: 12px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.summaryDetails span {
+  font-weight: 600;
+}
+
+.list img {
+  transition: all 0.5s;
+  width: 18rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid white;
+}
+
+.list img:hover {
+  transform: scale(1.04);
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+h3 {
+  color: white;
+  padding: 24px 24px 0 24px;
+}
+
+.listDetails {
+  font-size: x-large;
+}
+
+.listDetails p {
+  margin-bottom: 10px;
+}
+
+.listText {
+  font-weight: 600;
+}
+
+.list button {
+  height: 2rem;
+  border-radius: 0.75rem;
+  background-color: red;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  width: 12rem;
+}
