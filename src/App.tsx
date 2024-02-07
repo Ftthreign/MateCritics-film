@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import CircularProgress from "@mui/material/CircularProgress";
 import { useCallback, useEffect, useState } from "react";
 import { NavbarLogo, SearchBox, NavAccount } from "./components/navbar";
