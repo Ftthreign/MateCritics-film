@@ -32,7 +32,7 @@ const App = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleAddWatchList = (movie: any) => {
     if (movie.duration !== "N/A" || movie.duration !== "Ongoing") {
-      setWatched((watchList: any) => [...watchList, movie]);
+      setWatched((watchList) => [...watchList, movie]);
     }
   };
 
