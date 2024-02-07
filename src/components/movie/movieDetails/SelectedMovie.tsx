@@ -20,7 +20,7 @@ const SelectedMovie = ({
     try {
       setIsloading(true);
       const res = await fetch(
-        `http://www.omdbapi.com/?apikey=${API_KEY}&plot=full&i=${movieID}`
+        `https://www.omdbapi.com/?apikey=${API_KEY}&plot=full&i=${movieID}`
       );
       const data = await res.json();
 

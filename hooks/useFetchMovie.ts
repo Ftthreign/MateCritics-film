@@ -13,7 +13,7 @@ export function useFetchMovie(query: string, callback: () => void) {
         setIsloading(true);
         setError("");
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`
+          `https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`
         );
 
         if (!res.ok) throw new Error("Error Fetching data");
