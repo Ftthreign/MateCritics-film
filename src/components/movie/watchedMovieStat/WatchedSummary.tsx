@@ -1,4 +1,5 @@
 import { IWatchedMovie } from "../../../../common/types/movie";
+import Style from "./WatchedMovie.module.css";
 
 const WatchedSummary = ({ watched }: IWatchedMovie) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,27 +12,32 @@ const WatchedSummary = ({ watched }: IWatchedMovie) => {
   const avgImdbRating = avg(watched?.map((movie) => movie.rating));
   const avgUserRating = avg(watched?.map((movie) => movie.rating));
   const avgRuntime = avg(watched?.map((movie) => movie.duration));
+
+  const { summary, summaryDetails } = Style;
+
   return (
-    <div className="summary">
+    <div className={summary}>
       <h2>Movie You Watched</h2>
-      <div>
+      <div className={summaryDetails}>
         <p>
-          <span>emo1</span>
+          <span>Total Movie : </span>
           <span>{watched?.length} Movies</span>
         </p>
         <p>
-          <span>emo2</span>
+          <span>Average IMDB Rating : </span>
           <span>{avgImdbRating === 0 ? 0 : avgImdbRating.toFixed(2)}</span>
         </p>
-        {avgUserRating && (
+        {avgUserRating ? (
           <p>
-            <span>emo3</span>
+            <span>Average Your Rating : </span>
             <span>{avgUserRating.toFixed(2)}</span>
           </p>
+        ) : (
+          ""
         )}
         <p>
-          <span>emo4</span>
-          <span>{avgRuntime.toFixed(2)}</span>
+          <span>Average Runtime : </span>
+          <span>{avgRuntime.toFixed(2)} Min</span>
         </p>
       </div>
     </div>

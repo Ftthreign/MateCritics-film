@@ -60,6 +60,10 @@ const MovieDetailsHeader = ({
   }
 
   useEffect(() => {
+    if (userRatingValue) countRef.current = countRef.current++;
+  }, [userRatingValue]);
+
+  useEffect(() => {
     if (!title) return;
 
     document.title = `Movie | ${title}`;
@@ -94,6 +98,7 @@ const MovieDetailsHeader = ({
                     size={24}
                     maxRating={10}
                     onSetRating={onUserRating}
+                    color="red"
                   />
                   {ratingValue && (
                     <button onClick={handleAdd}>{"Add to list + "}</button>

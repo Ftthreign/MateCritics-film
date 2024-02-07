@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Star from "./Star";
 import { IStarRating } from "../../../common/types/ratings";
+
 const containerStyle = {
   display: "flex",
   alignItems: "center",
@@ -11,7 +12,7 @@ const starContainerStyle = {
   display: "flex",
 };
 
-function StarRating({
+const StarRating = ({
   maxRating = 5,
   color = "#fcc419",
   size = 48,
@@ -20,7 +21,7 @@ function StarRating({
   defaultRating = 0,
   onSetRating,
   reset = false,
-}: IStarRating) {
+}: IStarRating) => {
   const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
   const textStyle = {
@@ -28,6 +29,7 @@ function StarRating({
     margin: "0",
     color,
     fontSize: `${size / 1.5}px`,
+    fontWeight: 800,
   };
 
   const handleRating = (index: number) => {
@@ -68,6 +70,6 @@ function StarRating({
       )}
     </div>
   );
-}
+};
 
 export default StarRating;

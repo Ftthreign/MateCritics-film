@@ -1,8 +1,8 @@
 import CircularProgress from "@mui/material/CircularProgress";
 import { useCallback, useEffect, useState } from "react";
 import { NavbarLogo, SearchBox, NavAccount } from "./components/navbar";
-import { MovieData } from "../common/types/movie";
 import { useFetchMovie } from "../hooks/useFetchMovie";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 import "./main.css";
 import NavbarContainer from "./components/navbar/NavbarContainer";
@@ -15,11 +15,12 @@ import Button from "./components/button/button";
 import Modal from "./components/modal/modal";
 import WatchedSummary from "./components/movie/watchedMovieStat/WatchedSummary";
 import WatchedMovieList from "./components/movie/watchedMovieStat/WatchedMovieList";
+import Footer from "./components/footer/footer";
 
 const App = () => {
-  const [query, setQuery] = useState<string>("doraemon");
+  const [query, setQuery] = useState<string>("");
   const [selectedId, setSelectedId] = useState<null | string>(null);
-  const [watched, setWatched] = useState<MovieData[]>([]);
+  const [watched, setWatched] = useLocalStorage([], "WatchedData");
   const [isOpenList, setIsOpenList] = useState<boolean>(false);
   const [isOpenWatched, setIsOpenWatched] = useState<boolean>(false);
 
@@ -31,7 +32,7 @@ const App = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleAddWatchList = (movie: any) => {
     if (movie.duration !== "N/A" || movie.duration !== "Ongoing") {
-      setWatched((watchList) => [...watchList, movie]);
+      setWatched((watchList: any) => [...watchList, movie]);
     }
   };
 
@@ -44,7 +45,7 @@ const App = () => {
   };
 
   const handleDeleteWatchedMovie = (id: string) => {
-    setWatched((watch) => watch.filter((movie) => movie.imdbID !== id));
+    setWatched((watch: any[]) => watch.filter((movie) => movie.imdbID !== id));
   };
 
   const handleCloseMovie = useCallback(() => {
@@ -117,6 +118,10 @@ const App = () => {
           />
         </ContainerBox>
       </Modal>
+
+      <ContainerBox>
+        <Footer />
+      </ContainerBox>
     </>
   );
 };
