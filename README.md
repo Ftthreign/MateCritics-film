@@ -4,6 +4,9 @@ You can see the Demo with clone this repository by command :
 git clone https://github.com/Ftthreign/MateCritics-film.git
 ```
 
-This can't be deployed caused by using HTTP API
+You can visit the Pages here in the link :
+[MateCritics-film](https://matecritic-film-aql23mda8-ftthreign.vercel.app/)
 
-> I'll fix this Soon
+> NOTE :
+
+THIS IS STILL IN DESKTOP MODE AND NEED IMPROVEMENT IN UI AND RESPONSIVIBILITY
