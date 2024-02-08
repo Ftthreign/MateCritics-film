@@ -53,7 +53,8 @@ const App = () => {
     setSelectedId(null);
   }, []);
 
-  const { movies, isLoading, error } = useFetchMovie(query, handleCloseMovie);
+  const { movies, isLoading, error, curPages, totalRes, handleChangePage } =
+    useFetchMovie(query, handleCloseMovie);
 
   useEffect(() => {
     alert(
@@ -74,18 +75,25 @@ const App = () => {
       <ContainerBox>
         {isLoading && (
           <div className="progressbar">
-            <CircularProgress color="info" />
+            <CircularProgress color="warning" />
           </div>
         )}
         {error && <ErrorMessage errorMessage={error} />}
         {!isLoading && !error && (
           <>
-            <MovieResultNum founded={query} movies={movies} />
+            <MovieResultNum
+              founded={query}
+              result={totalRes}
+              curPages={curPages}
+            />
             <div className="separate__movie">
               <Button click={handleOpenList}>
                 <MovieList
                   movies={movies}
                   onSelectMovie={(id) => handleSelectMovie(id)}
+                  totalRes={totalRes}
+                  curPages={curPages}
+                  onPage={handleChangePage}
                 />
               </Button>
             </div>

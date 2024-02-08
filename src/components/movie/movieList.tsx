@@ -1,9 +1,17 @@
 import { IMovieList } from "../../../common/types/movie";
 import Movie from "./movie";
 import MovieStyle from "./movie.module.css";
+import { Pagination } from "@mui/material";
 
-const MovieList = ({ movies, onSelectMovie }: IMovieList) => {
-  const { list__movies } = MovieStyle;
+const MovieList = ({
+  movies,
+  totalRes,
+  curPages,
+  onPage,
+  onSelectMovie,
+}: IMovieList) => {
+  const { list__movies, pagination } = MovieStyle;
+  const totalPages = Math.ceil(totalRes / 10);
 
   return (
     <>
@@ -16,6 +24,15 @@ const MovieList = ({ movies, onSelectMovie }: IMovieList) => {
           />
         ))}
       </ul>
+      <div className={pagination}>
+        <Pagination
+          count={totalPages}
+          color="primary"
+          onChange={onPage}
+          page={curPages}
+          size="large"
+        />
+      </div>
     </>
   );
 };

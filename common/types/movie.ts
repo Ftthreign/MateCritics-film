@@ -26,6 +26,10 @@ export interface IMovieList {
   movies: MovieObj;
   onSelectMovie: (id: string | null) => void;
   movie?: MovieData;
+  curPages: number;
+  totalRes: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onPage?: any;
 }
 
 export interface IMovieType {
@@ -62,7 +66,8 @@ export interface IMovieDetailsHeader {
 
 export interface IMovieResult {
   founded: string;
-  movies: MovieObj;
+  curPages: number;
+  result: number;
 }
 
 export type newMovieType = {
