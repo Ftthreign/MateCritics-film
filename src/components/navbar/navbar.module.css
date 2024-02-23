@@ -53,6 +53,9 @@ input:focus {
   .navbar__container {
     display: flex;
     flex-wrap: wrap;
+    position: sticky;
+    width: 100%;
+    /* top: 0; */
   }
 
   .navbar__input input {

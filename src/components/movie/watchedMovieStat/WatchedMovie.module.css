@@ -68,3 +68,34 @@ h3 {
   color: white;
   width: 12rem;
 }
+
+@media screen and (max-width: 768px) {
+  .summaryDetails {
+    padding: 12px;
+    font-size: 0.7em;
+    overflow: scroll;
+    flex-wrap: nowrap;
+    display: inline;
+    text-align: center;
+  }
+
+  .list img {
+    height: 20rem;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  .list {
+    display: block;
+  }
+
+  .listDetails {
+    text-align: center;
+  }
+
+  .list button {
+    margin: 0 auto;
+    width: 100%;
+  }
+}

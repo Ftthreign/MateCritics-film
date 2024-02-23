@@ -32,6 +32,7 @@ const MovieDetailsHeader = ({
     ratingStyle,
     genreStyle,
     rated,
+    MovieTitle,
   } = Style;
   const countRef = useRef(0);
 
@@ -80,7 +81,7 @@ const MovieDetailsHeader = ({
         X
       </button>
       <div className={detailsOverview}>
-        <h2>{title}</h2>
+        <h2 className={MovieTitle}>{title}</h2>
         <div className={movieDescription}>
           <div>
             <img src={poster} alt={`${title} poster`} />
@@ -115,7 +116,10 @@ const MovieDetailsHeader = ({
               <span>Duration :</span>{" "}
               {duration === "N/A" ? "Ongoing" : duration}
             </p>
-            <p className={genreStyle}>{genre}</p>
+            <p className={genreStyle}>
+              <strong>Genre : </strong>
+              {genre}
+            </p>
             <p>
               <span>⭐</span>
               {rating} <strong>IMDB Rating</strong>

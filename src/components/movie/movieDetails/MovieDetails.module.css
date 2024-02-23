@@ -89,3 +89,54 @@
   font-size: medium;
   font-weight: 800;
 }
+
+@media screen and (max-width: 768px) {
+  .movie__details {
+    background-color: #1f214a;
+    padding: 20px;
+    height: 100%;
+    color: white;
+  }
+
+  .btnBack {
+    padding: 12px;
+    width: 30px;
+    margin-bottom: 40px;
+    transition: all 0.4s;
+    position: fixed;
+    top: 7%;
+    left: 2%;
+  }
+
+  .movieDescription {
+    display: block;
+  }
+
+  .movieDescription img {
+    height: 20rem;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  .MovieTitle {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    background-color: #1f214a;
+    padding: 10px;
+    border: 1px solid white;
+    width: 100%;
+  }
+
+  .ratingStyle {
+    width: 100%;
+    height: auto;
+  }
+
+  .rated {
+    font-size: small;
+    padding: 0;
+  }
+}
