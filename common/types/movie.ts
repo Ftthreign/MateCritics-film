@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type MovieObj = MovieData[];
 
 export type node = React.ReactNode;
@@ -12,7 +13,6 @@ export type MovieData = {
   Actor: string;
   Genre: string;
   Runtime: string;
-  myRating?: number;
 };
 
 export interface IMovieList {
@@ -74,7 +74,7 @@ export type newMovieType = {
 
 export interface IMovieDetailsSection {
   movieID: string;
-  movie: newMovieType;
+  movie: any;
   watched: MovieObj;
   ratingValue: string | number | undefined;
   onClose: () => void;
