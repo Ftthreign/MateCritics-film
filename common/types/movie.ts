@@ -13,6 +13,14 @@ export type MovieData = {
   Actor: string;
   Genre: string;
   Runtime: string;
+  imdbRating?: string;
+  Languange?: string;
+  Country?: string;
+  myRating?: string | number;
+  rating?: number;
+  duration?: number | string;
+  poster?: string;
+  title?: string;
 };
 
 export interface IMovieList {
@@ -21,7 +29,7 @@ export interface IMovieList {
   movie?: MovieData;
   curPages: number;
   totalRes: number;
-  onPage?: (a: number, b: number) => void;
+  onPage?: any;
 }
 
 export interface IMovieType {
@@ -45,7 +53,6 @@ export interface ISelectedMovie {
 
 export interface IMovieDetailsHeader {
   onCloseMovie: () => void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   movie: any;
   movieID: string;
   watched: MovieObj;
