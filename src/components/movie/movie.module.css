@@ -44,39 +44,4 @@
   .found__res {
     font-size: 0.75rem;
   }
-
-  /* .box__movie {
-    position: relative;
-  } */
-
-  /* .list__movies {
-    display: block;
-  } */
-
-  /* .list__movies {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    grid-gap: 20px;
-    padding: 10px; 
-  }
-
-  .item {
-    margin: 0;
-    width: calc(50% - 10px);
-  }
-  .item img {
-    border-radius: 12px;
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  .found__res {
-    font-size: 0.75rem;
-  }
-
-  .pagination {
-    margin-top: 20px;
-  } */
 }
