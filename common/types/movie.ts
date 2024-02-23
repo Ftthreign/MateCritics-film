@@ -12,14 +12,7 @@ export type MovieData = {
   Actor: string;
   Genre: string;
   Runtime: string;
-  imdbRating?: string;
-  Languange?: string;
-  Country?: string;
-  myRating?: string | number;
-  rating?: number;
-  duration?: number | string;
-  poster?: string;
-  title?: string;
+  myRating?: number;
 };
 
 export interface IMovieList {
@@ -28,8 +21,7 @@ export interface IMovieList {
   movie?: MovieData;
   curPages: number;
   totalRes: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onPage?: any;
+  onPage?: (a: number, b: number) => void;
 }
 
 export interface IMovieType {
@@ -59,7 +51,6 @@ export interface IMovieDetailsHeader {
   watched: MovieObj;
   ratingValue: string | number | undefined;
   onAddMovie: (movie: newMovieType) => void;
-  // onUserRating: React.Dispatch<React.SetStateAction<string>>;
   userRating?: string | number;
   onUserRating?: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -83,13 +74,11 @@ export type newMovieType = {
 
 export interface IMovieDetailsSection {
   movieID: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  movie: any;
+  movie: newMovieType;
   watched: MovieObj;
   ratingValue: string | number | undefined;
   onClose: () => void;
   onAddMovie: (movie: newMovieType) => void;
-  // onUserRating: React.Dispatch<React.SetStateAction<string>>;
   userRating?: string | number;
   onUserRating?: React.Dispatch<React.SetStateAction<string>>;
 }

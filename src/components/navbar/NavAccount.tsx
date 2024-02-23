@@ -1,12 +1,12 @@
 import { Tooltip } from "@mui/material";
-// import { useState } from "react";
+import PersonIcon from "@mui/icons-material/Person";
 
 import NavStyle from "./navbar.module.css";
 const NavAccount = () => {
   return (
     <Tooltip title="see watched film" arrow>
       <div className={NavStyle.avatar__navbar}>
-        <p>G</p>
+        <PersonIcon />
       </div>
     </Tooltip>
   );

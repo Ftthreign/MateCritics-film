@@ -17,6 +17,7 @@ import Modal from "./components/modal/modal";
 import WatchedSummary from "./components/movie/watchedMovieStat/WatchedSummary";
 import WatchedMovieList from "./components/movie/watchedMovieStat/WatchedMovieList";
 import Footer from "./components/footer/footer";
+import HamburgerMenu from "./components/navbar/HamburgerMenu";
 
 const App = () => {
   const [query, setQuery] = useState<string>("");
@@ -24,13 +25,14 @@ const App = () => {
   const [watched, setWatched] = useLocalStorage([], "WatchedData");
   const [isOpenList, setIsOpenList] = useState<boolean>(false);
   const [isOpenWatched, setIsOpenWatched] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   // Function Utilities
   const handleSelectMovie = (id: string | null) => {
     setSelectedId(id);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleAddWatchList = (movie: any) => {
     if (movie.duration !== "N/A" || movie.duration !== "Ongoing") {
       setWatched((watchList: any) => [...watchList, movie]);
@@ -56,20 +58,49 @@ const App = () => {
   const { movies, isLoading, error, curPages, totalRes, handleChangePage } =
     useFetchMovie(query, handleCloseMovie);
 
+  const handleToggleMenu = () => {
+    setOpenMenu(!openMenu);
+  };
+
   useEffect(() => {
-    alert(
-      "GUIDE :\nPRESS 'ENTER' to auto focus on search\nPRESS 'ESC' to back to main page"
-    );
+    alert("GUIDE :\nPRESS 'ESC' to back to main page");
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
     <>
       <NavbarContainer>
         <NavbarLogo />
-        <SearchBox query={query} setQuery={setQuery} />
-        <Button click={handleOpen}>
-          <NavAccount />
-        </Button>
+        {isMobile ? (
+          <HamburgerMenu onClicked={handleToggleMenu} />
+        ) : (
+          <>
+            <SearchBox query={query} setQuery={setQuery} />
+            <Button click={handleOpen}>
+              <NavAccount />
+            </Button>
+          </>
+        )}
+        {openMenu && isMobile && (
+          <>
+            <SearchBox query={query} setQuery={setQuery} />
+            <Button click={handleOpen}>
+              <NavAccount />
+            </Button>
+          </>
+        )}
       </NavbarContainer>
 
       <ContainerBox>

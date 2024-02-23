@@ -39,3 +39,9 @@
   background-color: white;
   padding: 12px;
 }
+
+@media only screen and (max-width: 768px) {
+  .found__res {
+    font-size: 0.75rem;
+  }
+}

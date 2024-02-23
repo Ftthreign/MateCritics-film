@@ -1,6 +1,6 @@
 import { IStar } from "../../../common/types/ratings";
 
-function Star({ onRate, onHoverIn, onHoverOut, full, color, size }: IStar) {
+const Star = ({ onRate, onHoverIn, onHoverOut, full, color, size }: IStar) => {
   const starStyle = {
     width: `${size}px`,
     height: `${size}px`,
@@ -42,6 +42,6 @@ function Star({ onRate, onHoverIn, onHoverOut, full, color, size }: IStar) {
       )}
     </span>
   );
-}
+};
 
 export default Star;
