@@ -4,9 +4,14 @@ You can see the Demo with clone this repository by command :
 git clone https://github.com/Ftthreign/MateCritics-film.git
 ```
 
+To setup the project you can use :
+
+```bash
+npm install
+npm run dev
+```
+
+Check the preview on the <b>localhost:5173</b>
+
 You can visit the Pages here in the link :
-[MateCritics-film](https://matecritic-film-aql23mda8-ftthreign.vercel.app/)
-
-> NOTE :
-
-THIS IS STILL IN DESKTOP MODE AND NEED IMPROVEMENT IN UI AND RESPONSIVIBILITY
+[MateCritics-film](https://matecritic-film.vercel.app/)
