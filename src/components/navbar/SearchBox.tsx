@@ -13,13 +13,17 @@ const SearchBox = ({ query, setQuery }: INavSearchProps) => {
     setQuery("");
   });
 
+  const handleQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  };
+
   return (
     <div className={NavStyle.navbar__input}>
       <input
         type="text"
         placeholder="Search movie here"
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={handleQuery}
       />
     </div>
   );

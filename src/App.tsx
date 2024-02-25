@@ -20,13 +20,15 @@ import Footer from "./components/footer/footer";
 import HamburgerMenu from "./components/navbar/HamburgerMenu";
 
 const App = () => {
+  const [open, setOpen] = useState({
+    isOpenList: false,
+    isOpenWatched: false,
+    openMenu: false,
+    isMobile: false,
+  });
   const [query, setQuery] = useState<string>("");
   const [selectedId, setSelectedId] = useState<null | string>(null);
   const [watched, setWatched] = useLocalStorage([], "WatchedData");
-  const [isOpenList, setIsOpenList] = useState<boolean>(false);
-  const [isOpenWatched, setIsOpenWatched] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   // Function Utilities
   const handleSelectMovie = (id: string | null) => {
@@ -40,11 +42,11 @@ const App = () => {
   };
 
   const handleOpen = () => {
-    setIsOpenWatched((e) => !e);
+    setOpen((prev) => ({ ...prev, isOpenWatched: !prev.isOpenWatched }));
   };
 
   const handleOpenList = () => {
-    setIsOpenList(true);
+    setOpen((prev) => ({ ...prev, isOpenList: true }));
   };
 
   const handleDeleteWatchedMovie = (id: string) => {
@@ -59,7 +61,7 @@ const App = () => {
     useFetchMovie(query, handleCloseMovie);
 
   const handleToggleMenu = () => {
-    setOpenMenu(!openMenu);
+    setOpen({ ...open, openMenu: !open.openMenu });
   };
 
   useEffect(() => {
@@ -68,7 +70,7 @@ const App = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setOpen({ ...open, isMobile: window.innerWidth <= 768 });
     };
 
     handleResize();
@@ -77,7 +79,9 @@ const App = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [open]);
+
+  const { openMenu, isMobile, isOpenList, isOpenWatched } = open;
 
   return (
     <>

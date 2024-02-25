@@ -58,6 +58,7 @@ const MovieDetailsHeader = ({
 
     onAddMovie(newMovie);
     onCloseMovie();
+    alert(`${newMovie.title} added to watched list`);
   }
 
   useEffect(() => {
