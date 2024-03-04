@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
-import { IMovieDetailsHeader } from "../../../../common/types/movie";
+import { IMovieDetailsHeader } from "@/common/types/movie";
+import StarRating from "@components/ratings/StarRating";
 import Style from "./MovieDetails.module.css";
-import StarRating from "../../ratings/StarRating";
 
 const MovieDetailsHeader = ({
   onCloseMovie,

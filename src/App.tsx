@@ -1,33 +1,33 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import CircularProgress from "@mui/material/CircularProgress";
 import { useCallback, useEffect, useState } from "react";
-import { NavbarLogo, SearchBox, NavAccount } from "./components/navbar";
-import { useFetchMovie } from "../hooks/useFetchMovie";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { NavbarLogo, SearchBox, NavAccount } from "@components/navbar";
+import { useFetchMovie } from "@/hooks/useFetchMovie";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 import "./main.css";
-import NavbarContainer from "./components/navbar/NavbarContainer";
-import MovieList from "./components/movie/movieList";
-import ErrorMessage from "./components/errorMsg/ErrorMessage";
-import ContainerBox from "./components/movie/ContainerBox";
-import SelectedMovie from "./components/movie/movieDetails/SelectedMovie";
-import MovieResultNum from "./components/movie/movieResult/movieResult";
-import Button from "./components/button/button";
-import Modal from "./components/modal/modal";
-import WatchedSummary from "./components/movie/watchedMovieStat/WatchedSummary";
-import WatchedMovieList from "./components/movie/watchedMovieStat/WatchedMovieList";
-import Footer from "./components/footer/footer";
-import HamburgerMenu from "./components/navbar/HamburgerMenu";
+import NavbarContainer from "@components/navbar/NavbarContainer";
+import MovieList from "@components/movie/movieList";
+import ErrorMessage from "@components/errorMsg/ErrorMessage";
+import ContainerBox from "@movie/ContainerBox";
+import SelectedMovie from "@movie/movieDetails/SelectedMovie";
+import MovieResultNum from "@movie/movieResult/movieResult";
+import Button from "@components/button/button";
+import Modal from "@components/modal/modal";
+import WatchedSummary from "@movie/watchedMovieStat/WatchedSummary";
+import WatchedMovieList from "@movie/watchedMovieStat/WatchedMovieList";
+import Footer from "@components/footer/footer";
+import HamburgerMenu from "@components/navbar/HamburgerMenu";
 
 const App = () => {
   const [open, setOpen] = useState({
     isOpenList: false,
     isOpenWatched: false,
     openMenu: false,
-    isMobile: false,
   });
   const [query, setQuery] = useState<string>("");
   const [selectedId, setSelectedId] = useState<null | string>(null);
+  const [isMobile, setIsmobile] = useState<boolean>(false);
   const [watched, setWatched] = useLocalStorage([], "WatchedData");
 
   // Function Utilities
@@ -64,24 +64,23 @@ const App = () => {
     setOpen({ ...open, openMenu: !open.openMenu });
   };
 
-  useEffect(() => {
-    alert("GUIDE :\nPRESS 'ESC' to back to main page");
-  }, []);
+  // useEffect(() => {
+  //   alert("GUIDE :\nPRESS 'ESC' to back to main page");
+  // }, []);
 
   useEffect(() => {
     const handleResize = () => {
-      setOpen({ ...open, isMobile: window.innerWidth <= 768 });
+      setIsmobile(window.innerWidth <= 768);
     };
-
     handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [open]);
+  }, []);
 
-  const { openMenu, isMobile, isOpenList, isOpenWatched } = open;
+  const { openMenu, isOpenList, isOpenWatched } = open;
 
   return (
     <>

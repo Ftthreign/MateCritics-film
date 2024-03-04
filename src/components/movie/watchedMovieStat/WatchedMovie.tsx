@@ -1,4 +1,4 @@
-import { IWatchedMovie } from "../../../../common/types/movie";
+import { IWatchedMovie } from "@/common/types/movie";
 import Style from "./WatchedMovie.module.css";
 
 const WatchedMovie = ({ movie, onDelete }: IWatchedMovie) => {

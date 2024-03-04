@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { API_KEY } from "../common/refs/data";
+import { API_KEY } from "@/common/refs/data";
 
 export function useFetchMovie(query: string, callback: () => void) {
   const [movies, setMovies] = useState([]);

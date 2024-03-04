@@ -1,4 +1,4 @@
-import { IStar } from "../../../common/types/ratings";
+import { IStar } from "@/common/types/ratings";
 
 const Star = ({ onRate, onHoverIn, onHoverOut, full, color, size }: IStar) => {
   const starStyle = {

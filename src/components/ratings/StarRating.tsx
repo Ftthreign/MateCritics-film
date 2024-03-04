@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Star from "./Star";
-import { IStarRating } from "../../../common/types/ratings";
+import { IStarRating } from "@/common/types/ratings";
 
 const containerStyle = {
   display: "flex",

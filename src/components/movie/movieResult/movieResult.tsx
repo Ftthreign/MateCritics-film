@@ -1,4 +1,4 @@
-import { IMovieResult } from "../../../../common/types/movie";
+import { IMovieResult } from "@/common/types/movie";
 import movieStyle from "../movie.module.css";
 const MovieResultNum = ({ founded, result, curPages }: IMovieResult) => {
   const { found__res } = movieStyle;

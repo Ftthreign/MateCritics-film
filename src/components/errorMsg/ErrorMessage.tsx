@@ -1,4 +1,4 @@
-import { IErrorMessage } from "../../../common/types/errorMsg";
+import { IErrorMessage } from "@/common/types/errorMsg";
 import Style from "./error.module.css";
 
 const ErrorMessage = ({ errorMessage }: IErrorMessage) => {

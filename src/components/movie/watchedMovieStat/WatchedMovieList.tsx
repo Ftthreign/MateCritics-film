@@ -1,4 +1,4 @@
-import { IWatchedMovie } from "../../../../common/types/movie";
+import { IWatchedMovie } from "@/common/types/movie";
 import WatchedMovie from "./WatchedMovie";
 
 const WatchedMovieList = ({ watched, onDelete }: IWatchedMovie) => {

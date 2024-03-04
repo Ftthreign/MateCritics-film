@@ -1,5 +1,5 @@
-import { INavSearchProps } from "../../../common/types/navbar";
-import { useKey } from "../../../hooks/useKey";
+import { INavSearchProps } from "@/common/types/navbar";
+import { useKey } from "@/hooks/useKey";
 import { useRef } from "react";
 import NavStyle from "./navbar.module.css";
 
