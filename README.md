@@ -13,5 +13,10 @@ npm run dev
 
 Check the preview on the <b>localhost:5173</b>
 
+> Preview Page
+
+<img src="./src/assets/Matecritics-film.webp">
+<br><br>
+
 You can visit the Pages here in the link :
 [MateCritics-film](https://matecritic-film.vercel.app/)
