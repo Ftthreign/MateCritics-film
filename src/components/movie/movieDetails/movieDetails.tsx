@@ -72,7 +72,6 @@ const MovieDetailsHeader = ({
 
     return () => {
       document.title = "MateCritics ";
-      console.log(`Clean up function for movie ${title}`);
     };
   }, [title]);
 

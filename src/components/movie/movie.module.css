@@ -23,12 +23,20 @@
   display: flex;
   justify-content: center;
   margin-bottom: 12px;
+  transition: all 0.4s ease-in-out;
   border: 2px solid white;
 }
 
 .item div {
   margin-bottom: 20px;
   text-wrap: wrap;
+}
+
+.item img:hover {
+  transform: scale(1.02);
+  -webkit-box-shadow: 6px 9px 12px 1px rgba(184, 184, 184, 1);
+  -moz-box-shadow: 6px 9px 12px 1px rgba(184, 184, 184, 1);
+  box-shadow: 6px 9px 12px 1px rgba(184, 184, 184, 1);
 }
 
 .pagination {
