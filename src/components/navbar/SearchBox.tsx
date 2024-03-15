@@ -1,7 +1,7 @@
 import { INavSearchProps } from "@/common/types/navbar";
 import { useKey } from "@/hooks/useKey";
 import { useRef } from "react";
-import NavStyle from "./navbar.module.css";
+import NavStyle from "@style/navbar.module.css";
 
 const SearchBox = ({ query, setQuery }: INavSearchProps) => {
   const inputEl = useRef<HTMLInputElement>(null);

@@ -1,6 +1,6 @@
 import { IMovieList } from "@/common/types/movie";
 import Movie from "./movie";
-import MovieStyle from "./movie.module.css";
+import MovieStyle from "@style/movie.module.css";
 import { Pagination } from "@mui/material";
 
 const MovieList = ({

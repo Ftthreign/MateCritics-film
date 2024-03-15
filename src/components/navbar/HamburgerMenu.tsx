@@ -1,5 +1,5 @@
 import MenuIcon from "@mui/icons-material/Menu";
-import NavStyle from "./navbar.module.css";
+import NavStyle from "@style/navbar.module.css";
 type click = {
   onClicked: () => void;
 };

@@ -1,5 +1,5 @@
 import { IWatchedMovie } from "@/common/types/movie";
-import Style from "./WatchedMovie.module.css";
+import Style from "@style/WatchedMovie.module.css";
 
 const WatchedSummary = ({ watched }: IWatchedMovie) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

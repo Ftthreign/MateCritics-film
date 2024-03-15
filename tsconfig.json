@@ -23,6 +23,7 @@
     "paths": {
       "@/*": ["./*"],
       "@components/*": ["./src/components/*"],
+      "@style/*": ["./src/style/*"],
       "@movie/*": ["./src/components/movie/*"]
     }
   },

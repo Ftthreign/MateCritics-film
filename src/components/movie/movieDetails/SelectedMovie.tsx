@@ -3,7 +3,7 @@ import { useCallback, useState, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 import { API_KEY } from "@/common/refs/data";
 import "@/src/main.css";
-import MovieStyle from "./MovieDetails.module.css";
+import MovieStyle from "@style/MovieDetails.module.css";
 import MovieDetailsHeader from "./movieDetails";
 
 const SelectedMovie = ({

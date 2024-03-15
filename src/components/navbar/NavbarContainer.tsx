@@ -1,4 +1,4 @@
-import NavStyle from "./navbar.module.css";
+import NavStyle from "@style/navbar.module.css";
 
 import { INavbarContainerProps } from "@/common/types/navbar";
 

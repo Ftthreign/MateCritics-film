@@ -1,5 +1,5 @@
 import { IModal } from "@/common/types/modal";
-import myModal from "./modal.module.css";
+import myModal from "@style/modal.module.css";
 
 const Modal = ({ children, isOpen, click }: IModal) => {
   if (!isOpen) return;

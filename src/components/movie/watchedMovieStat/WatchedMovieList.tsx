@@ -1,6 +1,6 @@
 import { IWatchedMovie } from "@/common/types/movie";
 import WatchedMovie from "./WatchedMovie";
-import Style from "./WatchedMovie.module.css";
+import Style from "@style/WatchedMovie.module.css";
 
 const { empty__data } = Style;
 
