@@ -1,73 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { MovieData } from "./movieAttr";
+
 type MovieObj = MovieData[];
 
 export type node = React.ReactNode;
-
-export type MovieData = {
-  Title: string;
-  Year: string;
-  imdbID: string;
-  Poster: string;
-  Plot: string;
-  Director: string;
-  Actor: string;
-  Genre: string;
-  Runtime: string;
-  imdbRating?: string;
-  Languange?: string;
-  Country?: string;
-  myRating?: string | number;
-  rating?: number;
-  duration?: number | string;
-  poster?: string;
-  title?: string;
-};
-
-export interface IMovieList {
-  movies: MovieObj;
-  onSelectMovie: (id: string | null) => void;
-  movie?: MovieData;
-  curPages: number;
-  totalRes: number;
-  onPage?: any;
-}
-
-export interface IMovieType {
-  key: string;
-  movie: MovieData;
-  onSelectMovie: (id: string | null) => void;
-}
-
-export interface IContainer {
-  children: node;
-}
-
-export interface ISelectedMovie {
-  movieID: string;
-  onCloseMovie: () => void;
-  onAddMovie: (movie: MovieObj | newMovieType) => void;
-  watched: MovieObj;
-  userRating?: string | number;
-  onUserRating?: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export interface IMovieDetailsHeader {
-  onCloseMovie: () => void;
-  movie: any;
-  movieID: string;
-  watched: MovieObj;
-  ratingValue: string | number | undefined;
-  onAddMovie: (movie: newMovieType) => void;
-  userRating?: string | number;
-  onUserRating?: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export interface IMovieResult {
-  founded: string;
-  curPages: number;
-  result: number;
-}
-
 export type newMovieType = {
   imdbID: string;
   title: string;
@@ -79,28 +16,68 @@ export type newMovieType = {
   myRating?: number | string;
 };
 
-export interface IMovieDetailsSection {
+interface IMovieBase {
+  movies: MovieObj;
+  movie?: MovieData;
   movieID: string;
-  movie: any;
   watched: MovieObj;
   ratingValue: string | number | undefined;
-  onClose: () => void;
+  userRating?: string | number;
+  onCloseMovie: () => void;
   onAddMovie: (movie: newMovieType) => void;
+  onUserRating?: React.Dispatch<React.SetStateAction<string>>;
+  onSelectMovie: (id: string | null | undefined) => void;
+}
+
+export interface IMovieList extends IMovieBase {
+  curPages: number;
+  totalRes: number;
+  onPage?: any;
+}
+
+export interface IMovieType
+  extends Omit<
+    IMovieBase,
+    | "onCloseMovie"
+    | "onAddMovie"
+    | "movies"
+    | "movieID"
+    | "watched"
+    | "ratingValue"
+  > {
+  key: string;
+}
+
+export interface ISelectedMovie extends IMovieBase {
+  movieID: string;
+  onCloseMovie: () => void;
+  onAddMovie: (movie: MovieObj | newMovieType) => void;
+  watched: MovieObj;
   userRating?: string | number;
   onUserRating?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export interface IWatchedSummary {
-  watched?: MovieObj;
-}
-export interface IWatchedMovieList {
-  watched?: MovieObj;
-  onDelete: () => void;
-  movie?: MovieData[];
+export interface IMovieDetailsHeader
+  extends Omit<IMovieBase, "movies" | "onSelectMovie"> {
+  movie: any;
 }
 
-export interface IWatchedMovie {
+export interface IMovieResult {
+  founded: string;
+  curPages: number;
+  result: number;
+}
+
+export interface IMovieDetailsSection extends IMovieBase {}
+export interface IWatchedSummary extends Pick<IMovieBase, "watched"> {}
+export interface IWatchedMovieList
+  extends Pick<IMovieBase, "watched" | "movie"> {
+  onDelete: () => void;
+}
+export interface IWatchedMovie extends Pick<IMovieBase, "watched"> {
   movie?: MovieData | newMovieType;
-  watched?: MovieObj;
   onDelete?: (id: string) => void;
+}
+export interface IContainer {
+  children: node;
 }
