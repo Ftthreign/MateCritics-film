@@ -26,10 +26,11 @@ interface IMovieBase {
   onCloseMovie: () => void;
   onAddMovie: (movie: newMovieType) => void;
   onUserRating?: React.Dispatch<React.SetStateAction<string>>;
-  onSelectMovie: (id: string | null | undefined) => void;
+  onSelectMovie: (id: string | null) => void;
 }
 
-export interface IMovieList extends IMovieBase {
+export interface IMovieList
+  extends Pick<IMovieBase, "movies" | "onSelectMovie"> {
   curPages: number;
   totalRes: number;
   onPage?: any;
@@ -48,13 +49,9 @@ export interface IMovieType
   key: string;
 }
 
-export interface ISelectedMovie extends IMovieBase {
-  movieID: string;
-  onCloseMovie: () => void;
+export interface ISelectedMovie
+  extends Pick<IMovieBase, "movieID" | "onCloseMovie" | "watched"> {
   onAddMovie: (movie: MovieObj | newMovieType) => void;
-  watched: MovieObj;
-  userRating?: string | number;
-  onUserRating?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface IMovieDetailsHeader
