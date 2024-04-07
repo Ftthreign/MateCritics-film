@@ -4,7 +4,7 @@ const Movie = ({ movie, onSelectMovie }: IMovieType) => {
   const { item } = movieStyle;
 
   return (
-    <li onClick={() => onSelectMovie(movie?.imdbID)} className={item}>
+    <li onClick={() => onSelectMovie(movie.imdbID)} className={item}>
       <img
         src={movie?.Poster}
         alt={`${movie?.Title} poster`}

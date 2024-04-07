@@ -18,7 +18,7 @@ export type newMovieType = {
 
 interface IMovieBase {
   movies: MovieObj;
-  movie?: MovieData;
+  movie: MovieData;
   movieID: string;
   watched: MovieObj;
   ratingValue: string | number | undefined;
@@ -40,7 +40,6 @@ export interface IMovieType
   extends Omit<
     IMovieBase,
     | "onCloseMovie"
-    | "onSelectMovie"
     | "onAddMovie"
     | "movies"
     | "movieID"
@@ -48,7 +47,6 @@ export interface IMovieType
     | "ratingValue"
   > {
   key: string;
-  onSelectMovie: (id: string | undefined) => void;
 }
 
 export interface ISelectedMovie
