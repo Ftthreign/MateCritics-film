@@ -1,5 +1,6 @@
 import { IWatchedMovie } from "@/common/types/movie";
 import Style from "@style/WatchedMovie.module.css";
+
 const WatchedMovie = ({ movie, onDelete }: IWatchedMovie) => {
   const handleConfirm = (id: string | undefined) => {
     const confirm = window.confirm("Are you sure want to delete this film?");

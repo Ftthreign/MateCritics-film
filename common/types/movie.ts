@@ -40,6 +40,7 @@ export interface IMovieType
   extends Omit<
     IMovieBase,
     | "onCloseMovie"
+    | "onSelectMovie"
     | "onAddMovie"
     | "movies"
     | "movieID"
@@ -47,6 +48,7 @@ export interface IMovieType
     | "ratingValue"
   > {
   key: string;
+  onSelectMovie: (id: string | undefined) => void;
 }
 
 export interface ISelectedMovie

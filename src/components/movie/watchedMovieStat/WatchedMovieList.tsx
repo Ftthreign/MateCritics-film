@@ -18,6 +18,7 @@ const WatchedMovieList = ({ watched, onDelete }: IWatchedMovie) => {
               movie={movie}
               key={movie.imdbID}
               onDelete={onDelete}
+              watched={watched}
             />
           ))}
         </ul>
