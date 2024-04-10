@@ -1,4 +1,4 @@
-import { IMovieList } from "@/common/types/movie";
+import type { IMovieList } from "@/common/types/movie";
 import Movie from "./movie";
 import MovieStyle from "@style/movie.module.css";
 import { Pagination } from "@mui/material";

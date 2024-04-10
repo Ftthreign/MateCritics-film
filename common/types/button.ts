@@ -1,4 +1,4 @@
-import { node } from "./movie";
+import type { node } from "./movie";
 
 export interface IButton {
   children: node;

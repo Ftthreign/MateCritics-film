@@ -1,4 +1,4 @@
-import { ISelectedMovie } from "@/common/types/movie";
+import type { ISelectedMovie } from "@/common/types/movie";
 import { useCallback, useState, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 import { API_KEY } from "@/common/refs/data";

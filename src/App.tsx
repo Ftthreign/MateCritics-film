@@ -7,17 +7,17 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 import "./main.css";
 import NavbarContainer from "@components/navbar/NavbarContainer";
-import MovieList from "@components/movie/movieList";
 import ErrorMessage from "@components/errorMsg/ErrorMessage";
+import Button from "@components/button/button";
+import Modal from "@components/modal/modal";
+import Footer from "@components/footer/footer";
+import HamburgerMenu from "@components/navbar/HamburgerMenu";
+import MovieList from "@movie/movieList";
+import WatchedMovieList from "@movie/watchedMovieStat/WatchedMovieList";
+import WatchedSummary from "@movie/watchedMovieStat/WatchedSummary";
 import ContainerBox from "@movie/ContainerBox";
 import SelectedMovie from "@movie/movieDetails/SelectedMovie";
 import MovieResultNum from "@movie/movieResult/movieResult";
-import Button from "@components/button/button";
-import Modal from "@components/modal/modal";
-import WatchedSummary from "@movie/watchedMovieStat/WatchedSummary";
-import WatchedMovieList from "@movie/watchedMovieStat/WatchedMovieList";
-import Footer from "@components/footer/footer";
-import HamburgerMenu from "@components/navbar/HamburgerMenu";
 
 const App = () => {
   const [{ openMenu, isOpenList, isOpenWatched, isMobile }, setOpen] = useState(

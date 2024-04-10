@@ -3,9 +3,8 @@
 import { MovieData } from "./movieAttr";
 
 type MovieObj = MovieData[];
-
-export type node = React.ReactNode;
-export type newMovieType = {
+type node = React.ReactNode;
+type newMovieType = {
   imdbID: string;
   title: string;
   year: string;
@@ -29,14 +28,13 @@ interface IMovieBase {
   onSelectMovie: (id: string | null) => void;
 }
 
-export interface IMovieList
-  extends Pick<IMovieBase, "movies" | "onSelectMovie"> {
+interface IMovieList extends Pick<IMovieBase, "movies" | "onSelectMovie"> {
   curPages: number;
   totalRes: number;
   onPage?: any;
 }
 
-export interface IMovieType
+interface IMovieType
   extends Omit<
     IMovieBase,
     | "onCloseMovie"
@@ -49,32 +47,45 @@ export interface IMovieType
   key: string;
 }
 
-export interface ISelectedMovie
+interface ISelectedMovie
   extends Pick<IMovieBase, "movieID" | "onCloseMovie" | "watched"> {
   onAddMovie: (movie: MovieObj | newMovieType) => void;
 }
 
-export interface IMovieDetailsHeader
+interface IMovieDetailsHeader
   extends Omit<IMovieBase, "movies" | "onSelectMovie"> {
   movie: any;
 }
 
-export interface IMovieResult {
+interface IMovieResult {
   founded: string;
   curPages: number;
   result: number;
 }
 
-export interface IMovieDetailsSection extends IMovieBase {}
-export interface IWatchedSummary extends Pick<IMovieBase, "watched"> {}
-export interface IWatchedMovieList
-  extends Pick<IMovieBase, "watched" | "movie"> {
+interface IMovieDetailsSection extends IMovieBase {}
+interface IWatchedSummary extends Pick<IMovieBase, "watched"> {}
+interface IWatchedMovieList extends Pick<IMovieBase, "watched" | "movie"> {
   onDelete: () => void;
 }
-export interface IWatchedMovie extends Pick<IMovieBase, "watched"> {
+interface IWatchedMovie extends Pick<IMovieBase, "watched"> {
   movie?: MovieData | newMovieType;
   onDelete?: (id: string) => void;
 }
-export interface IContainer {
+interface IContainer {
   children: node;
 }
+
+export type {
+  IMovieList,
+  IMovieType,
+  ISelectedMovie,
+  IMovieDetailsHeader,
+  IMovieResult,
+  IMovieDetailsSection,
+  IWatchedSummary,
+  IWatchedMovieList,
+  IWatchedMovie,
+  IContainer,
+};
+export type { node };

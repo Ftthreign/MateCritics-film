@@ -1,4 +1,4 @@
-import { IMovieType } from "@/common/types/movie";
+import type { IMovieType } from "@/common/types/movie";
 import movieStyle from "@style/movie.module.css";
 const Movie = ({ movie, onSelectMovie }: IMovieType) => {
   const { item } = movieStyle;

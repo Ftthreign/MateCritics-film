@@ -1,4 +1,4 @@
-import { IWatchedMovie } from "@/common/types/movie";
+import type { IWatchedMovie } from "@/common/types/movie";
 import WatchedMovie from "./WatchedMovie";
 import Style from "@style/WatchedMovie.module.css";
 

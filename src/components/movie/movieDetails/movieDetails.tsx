@@ -1,5 +1,5 @@
+import type { IMovieDetailsHeader } from "@/common/types/movie";
 import { useRef, useEffect } from "react";
-import { IMovieDetailsHeader } from "@/common/types/movie";
 import StarRating from "@components/ratings/StarRating";
 import Style from "@style/MovieDetails.module.css";
 

@@ -1,4 +1,4 @@
-import { IContainer } from "@/common/types/movie";
+import type { IContainer } from "@/common/types/movie";
 
 import movieStyle from "@style/movie.module.css";
 

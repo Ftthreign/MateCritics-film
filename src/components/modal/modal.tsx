@@ -1,4 +1,4 @@
-import { IModal } from "@/common/types/modal";
+import type { IModal } from "@/common/types/modal";
 import myModal from "@style/modal.module.css";
 
 const Modal = ({ children, isOpen, click }: IModal) => {

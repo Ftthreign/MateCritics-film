@@ -1,4 +1,4 @@
-import { IWatchedMovie } from "@/common/types/movie";
+import type { IWatchedMovie } from "@/common/types/movie";
 import Style from "@style/WatchedMovie.module.css";
 
 const WatchedSummary = ({ watched }: IWatchedMovie) => {
